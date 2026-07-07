@@ -1,0 +1,131 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROUTLY</title>
+  <link rel="stylesheet" href="../routly/style.css">
+  <link rel="icon" href="../routly/assets/logo/4.png" type="image/png">
+</head>
+<body>
+
+  <!-- header topo -->
+  <header class="topbar">
+    <div class="logo">
+      <img src="../routly/assets/logo/4.png" alt="logo routly">
+    </div>
+
+    <div class="user">
+      <span>Nome da Empresa aqui</span>
+      <div class="avatar">R</div>
+    </div>
+  </header>
+
+  <!-- menu lateral -->
+  <aside class="sidebar">
+    <ul>
+      <li class="active"><a href="../routly/index.html">Nova rota</a></li>
+      <li><a href="../routly/pages/historico.html">Histórico</a></li>
+      <li><a href="../routly/pages/frota.html">Frota</a></li>
+      <li><a href="../routly/pages/relatorio.html">Relatórios</a></li>
+    </ul>
+  </aside>
+
+  <!-- conteúdo principal -->
+  <main class="content">
+    <h1>Nova rota</h1>
+    <p class="subtitle">Insira as variáveis e calcule a melhor rota</p>
+
+    <div class="columns">
+
+      <!-- formulário -->
+      <form class="form">
+        <div class="field">
+          <label for="origem">Origem</label>
+          <input type="text" id="origem" placeholder="Insira aqui a origem da rota">
+        </div>
+
+        <div class="field">
+          <label for="destino">Destino</label>
+          <input type="text" id="destino" placeholder="Insira aqui o destino da rota">
+        </div>
+
+        <div class="field">
+          <label for="veiculo">Veículo</label>
+          <select id="veiculo">
+            <option></option>
+            <option>Veículo 1</option>
+            <option>Veículo 2</option>
+            <option>Veículo 3</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="carga">Carga</label>
+          <input type="text" id="carga" placeholder="Adicione o tipo de carga">
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="peso">Peso</label>
+            <input type="text" id="peso" placeholder="Adicione o peso da carga">
+          </div>
+          <div class="field">
+            <label for="preco">Preço diesel</label>
+            <input type="text" id="preco" placeholder="Adicione o preço do diesel">
+          </div>
+        </div>
+
+        <div class="field">
+            <label>Prioridade</label>
+            <div class="priority">
+            <button type="button" onclick=>Equilibrado</button>
+            <button type="button" onclick=>Custo</button>
+            <button type="button" onclick=>CO₂</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-primary">CALCULAR ROTA</button>
+      </form>
+
+      <!-- resultado -->
+      <section class="result">
+        <div class="result-header">
+          <span class="label">Rota recomendada:</span>
+          <span class="badge">MELHOR</span>
+        </div>
+
+        <!-- colocar mapa aqui -->
+        <div class="map-placeholder">
+          <span>Área do mapa</span>
+        </div>
+
+        <!-- métricas -->
+        <div class="metrics">
+          <div class="metric dark">
+            <span class="metric-label">Custo total</span>
+            <span class="metric-value" id="valor-custo">—</span>
+            <span class="metric-sub" id="sub-custo"></span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Tempo estimado</span>
+            <span class="metric-value" id="valor-tempo">—</span>
+            <span class="metric-sub" id="sub-tempo"></span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Emissão CO₂</span>
+            <span class="metric-value" id="valor-co2">—</span>
+            <span class="metric-sub" id="sub-co2"></span>
+          </div>
+          <div class="metric dark">
+            <span class="metric-label">Combustível</span>
+            <span class="metric-value" id="valor-combustivel">—</span>
+            <span class="metric-sub" id="sub-combustivel"></span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>
