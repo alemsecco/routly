@@ -7,7 +7,7 @@
   <link rel="icon" href="../routly/assets/logo/4.png" type="image/png">
 </head>
 <body>
-
+  
   <!-- header topo -->
   <header class="topbar">
     <div class="logo">
@@ -52,10 +52,12 @@
         <div class="field">
           <label for="veiculo">Veículo</label>
           <select id="veiculo">
-            <option></option>
-            <option>Veículo 1</option>
-            <option>Veículo 2</option>
-            <option>Veículo 3</option>
+            <option value="">Selecione um veículo</option>
+            <option value="VUC (Urbano)">VUC (Urbano)</option>
+            <option value="Caminhão Truck (6x2)">Caminhão Truck (6x2)</option>
+            <option value="Carreta LS (3 Eixos)">Carreta LS (3 Eixos)</option>
+            <option value="Bi-trem (7 Eixos)">Bi-trem (7 Eixos)</option>
+            <option value="Rodo-trem (9 Eixos)">Rodo-trem (9 Eixos)</option>
           </select>
         </div>
 
@@ -76,15 +78,15 @@
         </div>
 
         <div class="field">
-            <label>Prioridade</label>
-            <div class="priority">
-            <button type="button" onclick=>Equilibrado</button>
-            <button type="button" onclick=>Custo</button>
-            <button type="button" onclick=>CO₂</button>
-            </div>
+          <label>Prioridade</label>
+          <div class="priority">
+            <button type="button" class="btn-prioridade ativo" onclick="selecionarPrioridade(this, 'Equilibrado')">Equilibrado</button>
+            <button type="button" class="btn-prioridade" onclick="selecionarPrioridade(this, 'Custo')">Custo</button>
+            <button type="button" class="btn-prioridade" onclick="selecionarPrioridade(this, 'CO2')">CO₂</button>
+          </div>
         </div>
 
-        <button type="submit" class="btn-primary">CALCULAR ROTA</button>
+        <button type="submit" class="btn-calcular">CALCULAR ROTA</button>
       </form>
 
       <!-- resultado -->
@@ -127,5 +129,6 @@
     </div>
   </main>
 
+  <script src="index.js"></script>
 </body>
 </html>
