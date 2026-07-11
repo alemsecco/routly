@@ -3,8 +3,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ROUTLY</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../routly/style.css">
   <link rel="icon" href="../routly/assets/logo/4.png" type="image/png">
+ 
 </head>
 <body>
   
@@ -41,12 +45,20 @@
       <form class="form">
         <div class="field">
           <label for="origem">Origem</label>
-          <input type="text" id="origem" placeholder="Insira aqui a origem da rota">
+          <select id="origem">
+            <option value="Curitiba" selected>Curitiba</option>
+          </select>
         </div>
 
         <div class="field">
           <label for="destino">Destino</label>
-          <input type="text" id="destino" placeholder="Insira aqui o destino da rota">
+          <select id="destino">
+            <option value="">Selecione um destino</option>
+            <option value="Paranaguá">Paranaguá</option>
+            <option value="Ponta Grossa">Ponta Grossa</option>
+            <option value="Londrina">Londrina</option>
+            <option value="Maringá">Maringá</option>
+          </select>
         </div>
 
         <div class="field">
@@ -63,12 +75,21 @@
 
         <div class="field">
           <label for="carga">Carga</label>
-          <input type="text" id="carga" placeholder="Adicione o tipo de carga">
+          <select id="carga">
+            <option value="">Selecione uma carga</option>
+            <option value="Milho">Milho</option>
+            <option value="Soja">Soja</option>
+            <option value="Eletro-eletrônicos">Eletro-eletrônicos</option>
+            <option value="Carga viva (pequeno porte)">Carga viva (pequeno porte)</option>
+            <option value="Carga viva (grande porte)">Carga viva (grande porte)</option>
+            <option value="Peças, móveis e máquinas">Peças, móveis e máquinas</option>
+            <option value="Outro">Outro</option>
+          </select>
         </div>
 
         <div class="row">
           <div class="field">
-            <label for="peso">Peso</label>
+            <label for="peso">Peso (em toneladas)</label>
             <input type="text" id="peso" placeholder="Adicione o peso da carga">
           </div>
           <div class="field">
@@ -96,10 +117,24 @@
           <span class="badge">MELHOR</span>
         </div>
 
-        <!-- colocar mapa aqui -->
+        <!-- mapa (simbolico) -->
         <div class="map-placeholder">
-          <span>Área do mapa</span>
+          <svg id="svg-mapa" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- rota custo -->
+            <path id="rota-Custo" d="M 60 100 L 150 80 L 250 120 L 340 100" class="rota-linha" />
+            <!-- rota CO2 -->
+            <path id="rota-CO2" d="M 60 100 Q 200 20 340 100" class="rota-linha" />
+            <!-- rota equilibrada -->
+            <path id="rota-Equilibrado" d="M 60 100 Q 200 180 340 100" class="rota-linha rota-ativa" />
+            <!-- cidades (pontos) -->
+            <circle cx="60" cy="100" r="7" class="cidade-ponto" />
+            <circle cx="340" cy="100" r="7" class="cidade-ponto" />
+            <!-- cidades (texto) -->
+            <text x="60" y="130" id="mapa-texto-origem" class="cidade-texto">Curitiba</text>
+            <text x="340" y="130" id="mapa-texto-destino" class="cidade-texto">Destino</text>
+          </svg>
         </div>
+
 
         <!-- métricas -->
         <div class="metrics">
