@@ -141,3 +141,9 @@ document.querySelector('.btn-calcular').addEventListener('click', function(e) {
     document.getElementById('valor-combustivel').innerText = `${combustivelGastoLitros.toFixed(1).replace('.', ',')} L`;
     atualizarMapa(prioridadeSelecionada);
 });
+
+// para o modo claro e escuro
+  function toggleTheme(btn) {
+    document.body.classList.toggle('dark');
+    btn.textContent = document.body.classList.contains('dark') ? '☀︎' : '☽';
+  }

@@ -22,11 +22,13 @@
     <div class="user">
       <span>Nome da Empresa aqui</span>
       <div class="avatar">R</div>
+      <button class="theme-toggle" onclick="toggleTheme(this)">☽</button>
     </div>
   </header>
 
   <!-- menu lateral -->
   <aside class="sidebar">
+    <button class="sidebar-toggle" onclick="document.body.classList.toggle('sidebar-closed')">◀</button>
     <ul>
       <li class="active"><a href="index.html">Nova rota</a></li>
       <li><a href="/pages/historico.html">Histórico</a></li>
@@ -164,6 +166,10 @@
 
     </div>
   </main>
+  
+  <footer class="footer">
+  <p>© 2026 ROUTLY · Trucks and Hubs · Todos os direitos reservados.</p>
+  </footer>
 
   <script src="index.js"></script>
 </body>
