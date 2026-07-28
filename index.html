@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/assets/logo/4.png" type="image/png">
+  <link rel="icon" href="assets/logo/4.png" type="image/png">
  
 </head>
 <body>
@@ -16,7 +16,7 @@
   <!-- header topo -->
   <header class="topbar">
     <div class="logo">
-      <img src="/assets/logo/4.png" alt="logo routly">
+      <img src="assets/logo/claro.png" alt="logo routly">
     </div>
 
     <div class="user">
@@ -31,9 +31,9 @@
     <button class="sidebar-toggle" onclick="document.body.classList.toggle('sidebar-closed')">◀</button>
     <ul>
       <li class="active"><a href="index.html">Nova rota</a></li>
-      <li><a href="/pages/historico.html">Histórico</a></li>
-      <li><a href="/pages/frota.html">Frota</a></li>
-      <li><a href="/pages/relatorio.html">Relatórios</a></li>
+      <li><a href="pages/historico.html">Histórico</a></li>
+      <li><a href="pages/frota.html">Frota</a></li>
+      <li><a href="pages/relatorio.html">Relatórios</a></li>
     </ul>
   </aside>
 
@@ -162,6 +162,16 @@
             <span class="metric-sub" id="sub-combustivel"></span>
           </div>
         </div>
+
+        <button type="button" class="btn-salvar" id="btn-salvar-relatorio">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          SALVAR RELATÓRIO
+        </button>
+
       </section>
 
     </div>

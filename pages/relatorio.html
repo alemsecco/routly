@@ -16,17 +16,19 @@
   <!-- header topo -->
   <header class="topbar">
     <div class="logo">
-      <img src="../assets/logo/4.png" alt="logo routly">
+      <img src="../assets/logo/claro.png" alt="logo routly">
     </div>
 
     <div class="user">
       <span>Nome da Empresa aqui</span>
       <div class="avatar">R</div>
+      <button class="theme-toggle" onclick="toggleTheme(this)">☽</button>
     </div>
   </header>
 
   <!-- menu lateral -->
   <aside class="sidebar">
+    <button class="sidebar-toggle" onclick="document.body.classList.toggle('sidebar-closed')">◀</button>
     <ul>
       <li><a href="../index.html">Nova rota</a></li>
       <li><a href="../pages/historico.html">Histórico</a></li>
@@ -35,9 +37,13 @@
     </ul>
   </aside>
 
-  <main class="content">
-    <p>Em construção...</p>
+   <main class="content">
+    <h1>Relatórios Salvos</h1>
+    <p class="subtitle">Acesse o histórico de rotas calculadas e faça o download em PDF.</p>
+    <div id="reports-container">
+    </div>
   </main>
 
+  <script src="../index.js"></script>
 </body>
 </html>
