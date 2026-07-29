@@ -23,12 +23,12 @@ const dbRotas = {
     }
 };
 
-const dbVeiculos = {
-    "VUC (Urbano)": { consumoKmLBase: 6.5, capMaxToneladas: 3 },
-    "Caminhão Truck (6x2)": { consumoKmLBase: 4.0, capMaxToneladas: 14 },
-    "Carreta LS (3 Eixos)": { consumoKmLBase: 2.6, capMaxToneladas: 32 },
-    "Bi-trem (7 Eixos)": { consumoKmLBase: 2.0, capMaxToneladas: 40 },
-    "Rodo-trem (9 Eixos)": { consumoKmLBase: 1.5, capMaxToneladas: 52 }
+const dbVeiculos = { // apenas caminhão trator, não rígido (trator tem carreta, rígido não)
+    "Carreta LS (3 Eixos)": { consumoKmLBase: 2.6, capMaxToneladas: 48.5 },
+    "Carreta Vanderlea": {consumoKmLBase: 2.0, capMaxToneladas: 53}, // trocar consumo dps pro valor real
+    "Carreta Quarto Eixo": {consumoKmLBase: 2.0, capMaxToneladas: 58.5}, // trocar consumo dps pro valor real
+    "Bi-trem (7 Eixos)": { consumoKmLBase: 2.0, capMaxToneladas: 57 },
+    "Rodo-trem (9 Eixos)": { consumoKmLBase: 1.5, capMaxToneladas: 74 }
 };
 
 // botões de prioridade
