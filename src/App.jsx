@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import Topbar   from './components/Topbar'
-import Sidebar  from './components/Sidebar'
-import Footer   from './components/Footer'
+import Topbar from './components/Topbar'
+import Sidebar from './components/Sidebar'
+import Footer from './components/Footer'
 
-import NovaRota   from './pages/NovaRota'
-import Historico  from './pages/Historico'
-import Frota      from './pages/Frota'
-import Relatorios from './pages/Relatorios'
+import NovaRota from './pages/NovaRota'
+import Historico from './pages/Historico'
+import Frota from './pages/Frota'
 
 function App() {
   const [darkMode, setDarkMode]         = useState(false)
   const [sidebarClosed, setSidebarClosed] = useState(false)
 
-  // aplica as classes no body — o CSS depende delas
+  // aplica as classes no body 
   useEffect(() => {
     const classes = []
     if (darkMode)      classes.push('dark')
@@ -33,10 +32,11 @@ function App() {
 
       <main className="content">
         <Routes>
-          <Route path="/"           element={<NovaRota />} />
-          <Route path="/historico"  element={<Historico />} />
-          <Route path="/frota"      element={<Frota />} />
-          <Route path="/relatorios" element={<Relatorios />} />
+          <Route path="/" element={<NovaRota />} />
+          <Route path="/historico" element={<Historico />} />
+          <Route path="/frota" element={<Frota />} />
+          {/* /relatorios redireciona pra /historico (compatibilidade) */}
+          <Route path="/relatorios" element={<Historico />} />
         </Routes>
       </main>
 

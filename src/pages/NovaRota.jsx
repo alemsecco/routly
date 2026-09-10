@@ -23,7 +23,7 @@ function NovaRota() {
   function handleCalcular(e) {
     e.preventDefault()
 
-    const pesoNum  = parseFloat(String(peso).replace(',', '.')) || 0
+    const pesoNum = parseFloat(String(peso).replace(',', '.')) || 0
     const precoNum = parseFloat(String(precoDiesel).replace(',', '.')) || 0
     const chaveRota = `${origem}-${destino}`
 
@@ -57,7 +57,26 @@ function NovaRota() {
 
     const dadosRota = dbRotas[chaveRota][prioridade]
     const r = calcularRota({ dadosRota, dadosVeiculo, peso: pesoNum, precoDiesel: precoNum })
-    setResultado(r)
+    // guarda também qual rota foi calculada — pra imagem sumir se o usuário mudar destino
+    setResultado({ ...r, rotaOrigem: origem, rotaDestino: destino })
+  }
+
+  function handleWhatsapp() {
+    if (!resultado) {
+      alert('Calcule a rota primeiro antes de gerar o link.')
+      return
+    }
+    const mensagem =
+      `*Rota Routly*%0A` +
+      `${origem} ➔ ${destino}%0A%0A` +
+      `Veículo: ${veiculo}%0A` +
+      `Carga: ${carga}%0A` +
+      `Prioridade: ${prioridade}%0A%0A` +
+      `Custo: ${resultado.custoTotal}%0A` +
+      `Tempo: ${resultado.tempo}%0A` +
+      `CO₂: ${resultado.co2}%0A` +
+      `Combustível: ${resultado.combustivel}`
+    window.open(`https://wa.me/?text=${mensagem}`, '_blank')
   }
 
   function handleSalvar() {
@@ -170,7 +189,6 @@ function NovaRota() {
             </div>
           </div>
 
-          <button type="submit" className="btn-calcular">CALCULAR ROTA</button>
         </form>
 
         {/* RESULTADO */}
@@ -180,25 +198,51 @@ function NovaRota() {
             <span className="badge">MELHOR</span>
           </div>
 
-          <MapaSVG prioridadeAtiva={prioridade} origem={origem} destino={destino} />
+          <MapaSVG
+            prioridadeAtiva={prioridade}
+            origem={origem}
+            destino={destino}
+            calculado={
+              !!resultado &&
+              resultado.rotaOrigem === origem &&
+              resultado.rotaDestino === destino
+            }
+          />
 
           <Metricas resultado={resultado} />
-
-          <button
-            type="button"
-            className="btn-salvar"
-            onClick={handleSalvar}
-            style={
-              statusSalvar === 'falta'
-                ? { color: '#e11d48', borderColor: '#e11d48' }
-                : statusSalvar === 'salvo'
-                ? { backgroundColor: '#4a9d6e', color: '#ebe6d6' }
-                : {}
-            }
-          >
-            {textoBotaoSalvar}
-          </button>
         </section>
+      </div>
+
+      {/* AÇÕES — largura total, embaixo das duas colunas */}
+      <div className="acoes">
+        <button
+          type="button"
+          className="btn-acao btn-calcular"
+          onClick={handleCalcular}
+        >
+          CALCULAR ROTA
+        </button>
+        <button
+          type="button"
+          className="btn-acao btn-salvar"
+          onClick={handleSalvar}
+          style={
+            statusSalvar === 'falta'
+              ? { color: '#e11d48', borderColor: '#e11d48' }
+              : statusSalvar === 'salvo'
+              ? { backgroundColor: '#4a9d6e', color: '#ebe6d6' }
+              : {}
+          }
+        >
+          {textoBotaoSalvar}
+        </button>
+        <button
+          type="button"
+          className="btn-acao btn-whatsapp"
+          onClick={handleWhatsapp}
+        >
+          ENVIAR NO WHATSAPP
+        </button>
       </div>
     </>
   )

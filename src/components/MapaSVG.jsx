@@ -1,6 +1,39 @@
-// mapa simbólico — destaca a rota selecionada (Custo, CO2 ou Equilibrado)
+// mapa da rota — mostra imagem específica quando a rota foi calculada,
+// ou o SVG simbólico enquanto o usuário ainda não clicou em CALCULAR
 
-function MapaSVG({ prioridadeAtiva, origem, destino }) {
+// normaliza texto pra bater com o nome do arquivo:
+// remove acentos, tira espaços, minúsculo
+// ex: "Ponta Grossa" -> "pontagrossa", "Paranaguá" -> "paranagua"
+function normalizar(texto) {
+  return texto
+    .normalize('NFD')                    // separa letras dos acentos
+    .replace(/[̀-ͯ]/g, '')     // remove os acentos
+    .toLowerCase()
+    .replace(/\s+/g, '')                 // remove espaços
+}
+
+function MapaSVG({ prioridadeAtiva, origem, destino, calculado }) {
+  // se a rota foi calculada, monta o caminho da imagem: /curitiba-pontagrossa.jpeg
+  const imagem = calculado && origem && destino
+    ? `/${normalizar(origem)}-${normalizar(destino)}.jpeg`
+    : null
+
+  if (imagem) {
+    return (
+      <div className="map-placeholder map-imagem">
+        <img
+          src={imagem}
+          alt={`Rota de ${origem} para ${destino}`}
+          onError={(e) => {
+            // se não achou a imagem, esconde e cai no fallback SVG
+            e.target.style.display = 'none'
+          }}
+        />
+      </div>
+    )
+  }
+
+  // fallback: SVG genérico
   const classeRota = (nome) =>
     'rota-linha' + (prioridadeAtiva === nome ? ' rota-ativa' : '')
 
